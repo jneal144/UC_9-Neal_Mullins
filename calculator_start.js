@@ -1,26 +1,26 @@
-var currentInput = "0";
+var current_input = "0";
 var memory = "0";
 var operator = 0;
 var sto = "0";
 var pi = Math.PI;
-var angMode = 0;
+var angle_mode = 0;
 /**
  * [[Description]]
  */
 function displayCurrentInput() {
-    document.getElementById('screen').value = currentInput;
+    document.getElementById('screen').value = current_input;
 }
 /**
  * [[Description]]
  * @param {[[Type]]} dig [[Description]]
  */
 function addDigit(dig) {
-    if (currentInput.length < 16) {
-        if ((eval(currentInput) == 0) && (currentInput.indexOf(".") == -1)) {
-            currentInput = dig;
+    if (current_input.length < 16) {
+        if ((eval(current_input) == 0) && (current_input.indexOf(".") == -1)) {
+            current_input = dig;
         }
         else {
-            currentInput = currentInput + dig;
+            current_input = current_input + dig;
         }
     }
     displayCurrentInput();
@@ -29,12 +29,12 @@ function addDigit(dig) {
  * [[Description]]
  */
 function addDecimal() {
-    if (currentInput.length == 0) {
-        currentInput = "0.";
+    if (current_input.length == 0) {
+        current_input = "0.";
     }
     else {
-        if (currentInput.indexOf(".") == -1) {
-            currentInput = currentInput + ".";
+        if (current_input.indexOf(".") == -1) {
+            current_input = current_input + ".";
         }
     }
     displayCurrentInput();
@@ -43,7 +43,7 @@ function addDecimal() {
  * [[Description]]
  */
 function allClear() {
-    currentInput = "0";
+    current_input = "0";
     operator = 0;
     memory = "0";
     displayCurrentInput();
@@ -68,28 +68,28 @@ function storeOperator(op) {
     if (op.indexOf("^") > -1) {
         operator = 5;
     };
-    memory = currentInput;
-    currentInput = "0";
+    memory = current_input;
+    current_input = "0";
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Based on operator value, perform operation between stored value and current input.
  */
 function calculate() {
     if (operator == 1) {
-        currentInput = eval(memory) * eval(currentInput);
+        current_input = eval(memory) * eval(current_input); //multiply
     };
     if (operator == 2) {
-        currentInput = eval(memory) / eval(currentInput);
+        current_input = eval(memory) / eval(current_input); //divide
     };
     if (operator == 3) {
-        currentInput = eval(memory) + eval(currentInput);
+        current_input = eval(memory) + eval(current_input); //add
     };
     if (operator == 4) {
-        currentInput = eval(memory) - eval(currentInput);
+        current_input = eval(memory) - eval(current_input); //subtract
     };
     if (operator == 5) {
-        currentInput = Math.pow((eval(memory)), (eval(currentInput)));
+        current_input = Math.pow((eval(memory)), (eval(current_input))); //raise to power
     }
     operator = 0;
     memory = "0";
@@ -97,176 +97,176 @@ function calculate() {
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Multiply current input by -1 and display.
  */
 function changeSign() {
-    currentInput = currentInput * -1;
+    current_input = current_input * -1;
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Set current input to 0 and display.
  */
 function Clear() {
-    currentInput = "0";
+    current_input = "0";
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Divide current input by 100 and display.
  */
 function percentage() {
-    currentInput = currentInput / 100;
+    current_input = current_input / 100;
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Calculate and display factorial of current input.
  */
 function factorial() {
-    var res = currentInput;
-    if (currentInput == 0) {
+    var res = current_input;
+    if (current_input == 0) { //special case 0!
         res = 1
     }
-    else if (currentInput > 0) {
-        for (i = currentInput - 1; i > 0; i--) {
+    else if (current_input > 0) {
+        for (i = current_input - 1; i > 0; i--) { //factorial calculation
             res = res * i;
         }
     }
-    else if (currentInput < 0) {
+    else if (current_input < 0) {
         res = "ERROR";
     }
-    currentInput = res;
+    current_input = res;
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Calculate and display square of current input.
  */
 function square() {
-    var x = currentInput;
-    currentInput = Math.pow(x, 2);
+    var x = current_input;
+    current_input = Math.pow(x, 2);
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Calculate and display square root of current input.
  */
 function squareRoot() {
-    currentInput = Math.pow(currentInput, 1 / 2);
+    current_input = Math.pow(current_input, 1 / 2);
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Calculate and display inverse of current input.
  */
 function inverse() {
-    currentInput = 1 / currentInput;
+    current_input = 1 / current_input;
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * If current input equals infinity, display divide by zero error.
  */
 function zeroErr() {
-    if (currentInput == Infinity) {
-        currentInput = "ERROR: Divide by 0!";
+    if (current_input == Infinity) {
+        current_input = "ERROR: Divide by 0!";
         displayCurrentInput();
     }
 }
 /**
- * [[Description]]
+ * Stores current input as var "sto"
  */
 function memoryStore() {
-    sto = currentInput;
+    sto = current_input;
     Clear();
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Sets current input to last stored value.
  */
 function memoryRecall() {
-    currentInput = sto;
+    current_input = sto;
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Adds current input from stored value; stores result.
  */
 function memoryAdd() {
-    currentInput = eval(sto) + eval(currentInput);
+    current_input = eval(sto) + eval(current_input);
     memoryStore();
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Subtracts current input from stored value; stores result.
  */
 function memorySub() {
-    currentInput = eval(sto) - eval(currentInput);
+    current_input = eval(sto) - eval(current_input);
     memoryStore();
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Sets current input to pi (3.1415...)
  */
 function setPi() {
-    currentInput = pi;
+    current_input = pi;
     displayCurrentInput()
 }
 /**
- * [[Description]]
+ * Switches angle mode from 0 (radians) to 1 (degrees) and vice versa.
  */
 function angleMode() {
-    if (angMode == 0) {
-        angMode = 1;
+    if (angle_mode == 0) {
+        angle_mode = 1;
     }
     else {
-        angMode = 0;
+        angle_mode = 0;
     }
 }
 /**
- * [[Description]]
+ * Based on angle mode, calculates sine of current input.
  */
 function sine() {
-    if (angMode == 1) {
-        var num = currentInput * (pi / 180);
-        currentInput = Math.sin(num);
+    if (angle_mode == 1) {
+        var num = current_input * (pi / 180);
+        current_input = Math.sin(num);
     }
     else {
-        currentInput = Math.sin(currentInput);
+        current_input = Math.sin(current_input);
     }
     displayCurrentInput();
     checkZero();
 }
 /**
- * [[Description]]
+ * Based on angle mode, calculates cosine of current input.
  */
 function cosine() {
-    if (angMode == 1) {
-        var num = currentInput * (pi / 180);
-        currentInput = Math.cos(num);
+    if (angle_mode == 1) {
+        var num = current_input * (pi / 180);
+        current_input = Math.cos(num);
     }
     else {
-        currentInput = Math.cos(currentInput);
+        current_input = Math.cos(current_input);
     }
     displayCurrentInput();
     checkZero();
 }
 /**
- * [[Description]]
+ * Based on angle mode, calculates tangent of current input.
  */
 function tangent() {
-    if (angMode == 1) {
-        var num = currentInput * (pi / 180);
-        currentInput = Math.tan(num);
+    if (angle_mode == 1) {
+        var num = current_input * (pi / 180);
+        current_input = Math.tan(num);
     }
     else {
-        currentInput = Math.tan(currentInput);
+        current_input = Math.tan(current_input);
     }
     displayCurrentInput();
     checkZero();
 }
 /**
- * [[Description]]
+ * Checks if current input is within .0000000001 of 0. If true, set current input to zero.
  */
 function checkZero() {
-    if (currentInput < Math.pow(10, -10) && currentInput > 0) {
-        currentInput = 0;
+    if (current_input < Math.pow(10, -10) && current_input > 0) {
+        current_input = 0;
     }
-    else if (currentInput > (Math.pow(10, -10) * -1) && currentInput < 0) {
-        currentInput = 0;
+    else if (current_input > (Math.pow(10, -10) * -1) && current_input < 0) {
+        current_input = 0;
     }
     displayCurrentInput();
 }
