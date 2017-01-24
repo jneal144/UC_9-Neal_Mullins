@@ -4,11 +4,16 @@ var operator = 0;
 var sto = "0";
 var pi = Math.PI;
 var angMode = 0;
-
+/**
+ * [[Description]]
+ */
 function displayCurrentInput() {
     document.getElementById('screen').value = currentInput;
 }
-
+/**
+ * [[Description]]
+ * @param {[[Type]]} dig [[Description]]
+ */
 function addDigit(dig) {
     if (currentInput.length < 16) {
         if ((eval(currentInput) == 0) && (currentInput.indexOf(".") == -1)) {
@@ -20,7 +25,9 @@ function addDigit(dig) {
     }
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function addDecimal() {
     if (currentInput.length == 0) {
         currentInput = "0.";
@@ -32,14 +39,19 @@ function addDecimal() {
     }
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function allClear() {
     currentInput = "0";
     operator = 0;
     memory = "0";
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ * @param {[[Type]]} op [[Description]]
+ */
 function storeOperator(op) {
     if (op.indexOf("*") > -1) {
         operator = 1;
@@ -60,7 +72,9 @@ function storeOperator(op) {
     currentInput = "0";
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function calculate() {
     if (operator == 1) {
         currentInput = eval(memory) * eval(currentInput);
@@ -82,22 +96,30 @@ function calculate() {
     zeroErr();
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function changeSign() {
     currentInput = currentInput * -1;
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function Clear() {
     currentInput = "0";
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function percentage() {
     currentInput = currentInput / 100;
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function factorial() {
     var res = currentInput;
     if (currentInput == 0) {
@@ -114,58 +136,78 @@ function factorial() {
     currentInput = res;
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function square() {
     var x = currentInput;
     currentInput = Math.pow(x, 2);
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function squareRoot() {
     currentInput = Math.pow(currentInput, 1 / 2);
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function inverse() {
     currentInput = 1 / currentInput;
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function zeroErr() {
     if (currentInput == Infinity) {
         currentInput = "ERROR: Divide by 0!";
         displayCurrentInput();
     }
 }
-
+/**
+ * [[Description]]
+ */
 function memoryStore() {
     sto = currentInput;
     Clear();
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function memoryRecall() {
     currentInput = sto;
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function memoryAdd() {
     currentInput = eval(sto) + eval(currentInput);
     memoryStore();
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function memorySub() {
     currentInput = eval(sto) - eval(currentInput);
     memoryStore();
     displayCurrentInput();
 }
-
+/**
+ * [[Description]]
+ */
 function setPi() {
     currentInput = pi;
     displayCurrentInput()
 }
-
+/**
+ * [[Description]]
+ */
 function angleMode() {
     if (angMode == 0) {
         angMode = 1;
@@ -174,7 +216,9 @@ function angleMode() {
         angMode = 0;
     }
 }
-
+/**
+ * [[Description]]
+ */
 function sine() {
     if (angMode == 1) {
         var num = currentInput * (pi / 180);
@@ -186,7 +230,9 @@ function sine() {
     displayCurrentInput();
     checkZero();
 }
-
+/**
+ * [[Description]]
+ */
 function cosine() {
     if (angMode == 1) {
         var num = currentInput * (pi / 180);
@@ -198,7 +244,9 @@ function cosine() {
     displayCurrentInput();
     checkZero();
 }
-
+/**
+ * [[Description]]
+ */
 function tangent() {
     if (angMode == 1) {
         var num = currentInput * (pi / 180);
@@ -210,7 +258,9 @@ function tangent() {
     displayCurrentInput();
     checkZero();
 }
-
+/**
+ * [[Description]]
+ */
 function checkZero() {
     if (currentInput < Math.pow(10, -10) && currentInput > 0) {
         currentInput = 0;
