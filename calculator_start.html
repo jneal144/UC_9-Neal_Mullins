@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Calcuator Starter App</title>
+    <script src="calculator_start.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Calculator App</h1>
+    <form>
+        <p>
+            <input readonly type="text" style="text-align: right" id="screen"> </p>
+        <p>
+            <button type="button" class = "btn btn-danger" onclick="allClear()">AC</button>
+            <button type="button" class = "btn btn-danger" onclick="Clear()">C</button>
+            <button type="button" class = "btn btn-success" onclick="changeSign()">+/-</button>
+            <button type="button" class = "btn btn-warning" onclick="percentage()">%</button>
+            <button type="button" class = "btn btn-warning" onclick="storeOperator('^')">^</button>
+        </p>
+        <p>
+            <button type="button" class = "btn btn-warning" onclick="memoryStore()">ms</button>
+            <button type="button" class = "btn btn-warning" onclick="memoryRecall()">mr</button>
+            <button type="button" class = "btn btn-warning" onclick="memoryAdd()">m+</button>
+            <button type="button" class = "btn btn-warning" onclick="memorySub()">m-</button>
+            <button type="button" class = "btn btn-warning" onclick="setPi()">&#960;</button>
+        </p>
+        <p>
+            <button type="button" class = "btn btn-warning" onclick=angleMode()>deg</button>
+            <button type="button" class = "btn btn-warning" onclick="sine()">sin</button>
+            <button type="button" class = "btn btn-warning" onclick="cosine()">cos</button>
+            <button type="button" class = "btn btn-warning" onclick="tangent()">tan</button>
+        </p>
+        <p>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('7')">7</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('8')">8</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('9')">9</button>
+            <button type="button" class = "btn btn-success" onclick="storeOperator('+')">+</button>
+            <button type="button" class = "btn btn-warning" onclick="square()">x^2</button>
+        </p>
+        <p>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('4')">4</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('5')">5</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('6')">6</button>
+            <button type="button" class = "btn btn-success" onclick="storeOperator('-')">-</button>
+            <button type="button" class = "btn btn-warning" onclick="squareRoot()">&#8730;x</button>
+        </p>
+        <p>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('1')">1</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('2')">2</button>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('3')">3</button>
+            <button type="button" class = "btn btn-success" onclick="storeOperator('*')">x</button>
+            <button type="button" class = "btn btn-warning" onclick="factorial()">x!</button>
+
+        </p>
+        <p>
+            <button type="button" class = "btn btn-primary" onclick="addDigit('0')">0</button>
+            <button type="button" class = "btn btn-primary" onclick="addDecimal()">. </button>
+            <button type="button" class = "btn btn-info" onclick="calculate()">=</button>
+            <button type="button" class = "btn btn-success" onclick="storeOperator('/')">/</button>
+            <button type="button" class = "btn btn-warning" onclick="inverse()">inv</button>
+        </p>
+    </form>
+</body>
+
+</html>
