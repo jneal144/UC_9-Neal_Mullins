@@ -5,14 +5,14 @@ var sto = "0";
 var pi = Math.PI;
 var angle_mode = 0;
 /**
- * [[Description]]
+ * Displays the calculator input on the screen.
  */
 function displayCurrentInput() {
     document.getElementById('screen').value = current_input;
 }
 /**
- * [[Description]]
- * @param {[[Type]]} dig [[Description]]
+ * Allows digits clicked to be displayed in the current input.
+ * @param {string} dig Digit to be added to current input string.
  */
 function addDigit(dig) {
     if (current_input.length < 16) {
@@ -26,7 +26,7 @@ function addDigit(dig) {
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Adds decimal point to current input string.
  */
 function addDecimal() {
     if (current_input.length == 0) {
@@ -40,7 +40,7 @@ function addDecimal() {
     displayCurrentInput();
 }
 /**
- * [[Description]]
+ * Clears calculator memory and current input.
  */
 function allClear() {
     current_input = "0";
@@ -49,8 +49,8 @@ function allClear() {
     displayCurrentInput();
 }
 /**
- * [[Description]]
- * @param {[[Type]]} op [[Description]]
+ * Stores +, -, *, /, or ^ operators in memory.
+ * @param {string} op denotes operator type
  */
 function storeOperator(op) {
     if (op.indexOf("*") > -1) {
@@ -183,7 +183,7 @@ function memoryRecall() {
     displayCurrentInput();
 }
 /**
- * Adds current input from stored value; stores result.
+ * Adds current input to stored value; stores result.
  */
 function memoryAdd() {
     current_input = eval(sto) + eval(current_input);
